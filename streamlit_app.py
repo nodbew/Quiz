@@ -14,7 +14,7 @@ if 'args' not in session_state:
         'flags': 1,
     }
 if 'board' not in session_state:
-    session_state.board, session_state.start_pos, session_state.flag_positions = core.generate_map(**args)
+    session_state.board, session_state.start_pos, session_state.flag_positions = core.generate_map(**session_state.args)
 if 'commands' not in session_state:
     session_state.commands = list()
 if 'executer' not in session_state:
@@ -60,6 +60,10 @@ with main:
             session_state.commands.append('endif')
         if st.button('実行'):
             session_state.executer = core.execute(session_state.commands, session_state.board, session_state.start_pos)
+        if st.button('次へ'):
+            session_state.board = core.generate_map(**session_state.args)
+            session_state.commands = list()
+            session_state.executer = None
             
 with setting:
     session_state.args['size'] = st.slider(
