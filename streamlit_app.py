@@ -3,7 +3,7 @@ from streamlit import session_state
 import pandas as pd
 from streamlit_scrollable_textbox import scrollableTextbox
 
-from . import core
+import core
 
 # Initializations
 session_state.board, session_state.start_pos = core.generate_map()
