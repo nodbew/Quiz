@@ -26,3 +26,18 @@ def visualize(board:np.ndarray) -> np.ndarray:
         ':checkered_flag:',
         ':cat:' # Player
     )
+
+def _format_command_str(command:str) -> str:
+    '''
+    Takes a command and turn it into an understandable string.
+    Conversion table:
+        'move' -> '一歩進む'
+        'turn' -> '右を向く'
+        'if wall' -> '
+    '''
+
+def format_command(commands:list[str]) -> str:
+    '''
+    Takes a list of commands and turn it to a string that is understandable for users.
+    '''
+    return '\n'.join(_format_command_str(command) for command in commands)
