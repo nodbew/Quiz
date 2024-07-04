@@ -33,8 +33,21 @@ def _format_command_str(command:str) -> str:
     Conversion table:
         'move' -> '一歩進む'
         'turn' -> '右を向く'
-        'if wall' -> '
+        'if wall' -> 'IF 目の前が壁['
+        'else' -> ']ELSE['
+        'endif' -> ']'
     '''
+    match command:
+        case 'move':
+            return '一歩進む'
+        case 'turn':
+            return '右を向く'
+        case 'if wall':
+            return 'IF 目の前が壁[':
+        case 'else':
+            return ']ELSE['
+        case 'endif':
+            return ']'
 
 def format_command(commands:list[str]) -> str:
     '''
