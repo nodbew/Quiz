@@ -1,6 +1,7 @@
 import streamlit as st
 from streamlit import session_state
 import pandas as pd
+from streamlit_scrollable_textbox import scrollableTextbox
 
 from . import core
 
@@ -22,4 +23,14 @@ with board:
     )
 
 with command_palette:
-    #
+    scrollableTextbox(frontend.format_commands(session_state.commands))
+    if st.button('一歩進む'):
+        session_state.commands.append('move')
+    if st.button('右を向く'):
+        session_state.commands.append('turn')
+    if st.button('IF 目の前が壁['):
+        session_state.commands.append('if wall')
+    if st.button(']ELSE['):
+        session_state.commands.append('else')
+    if st.button(']'):
+        session_state.commands.append('endif')
