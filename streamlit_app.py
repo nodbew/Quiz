@@ -44,7 +44,6 @@ with main:
                 session_state.executer = None            
 
     with command_palette:
-        st.write(session_state.commands)
         scrollableTextbox(frontend.format_commands(session_state.commands))
         if st.button('一歩進む'):
             session_state.commands.append('move')
