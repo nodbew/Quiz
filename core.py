@@ -32,7 +32,7 @@ def generate_map(size:tuple[int, int], complexity_x:int = 1, complexity_y:int = 
 
     starting_position = (lines_x[0], len(board[:,0]) - 1)
 
-    return board, starting_position
+    return board, starting_position, flag_positions
 
 def recurse(func):
     '''
