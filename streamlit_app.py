@@ -56,7 +56,10 @@ with main:
         if st.button(']'):
             session_state.commands.append('endif')
         if st.button('消す'):
-            session_state.commands.pop(-1)
+            try:
+                session_state.commands.pop(-1)
+            except IndexError:
+                pass
         if st.button('実行'):
             session_state.executer = core.execute(session_state.commands, session_state.board, session_state.start_pos)
         if st.button('次へ'):
