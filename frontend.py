@@ -20,6 +20,7 @@ def visualize(board:np.ndarray) -> np.ndarray:
     0.5 to :checkered_flag:,
     and 0.25 to ':cat:'.
     '''
+    shape = board.shape
     return np.where(
         np.where(
             np.where(board == 0, '', _no_change) == 1, #(replaced walkable) == wall
@@ -28,7 +29,7 @@ def visualize(board:np.ndarray) -> np.ndarray:
         ) == 0.5, # Flags
         ':checkered_flag:',
         ':cat:' # Player
-    ).reshape((st.session_state.args['size'][0] - 1, st.session_state.args['size'][1] - 1))
+    ).reshape(shape)
 
 def _format_command_str(command:str) -> str:
     '''
