@@ -69,7 +69,7 @@ with setting:
             value = 8,
             step = 1,
             on_change = frontend.rerun,
-        ) + 2,
+        ) + 1,
         st.slider(
             label = '横の長さ',
             min_value = 1,
@@ -77,7 +77,7 @@ with setting:
             value = 8,
             step = 1,
             on_change = frontend.rerun,
-        ) + 2,
+        ) + 1,
     )
     session_state.args['complexity_x'] = st.slider(
         label = '縦道の数',
