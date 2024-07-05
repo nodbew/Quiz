@@ -19,11 +19,10 @@ def visualize(board:np.ndarray) -> np.ndarray:
     and 0.25 to ':cat:'.
     '''
     shape = board.shape
-    new_board = np.where(board == 0, '', board) # Walkable road
-    new_board = np.where(new_board == 1, 'X', new_board) # Walls
-    new_board = np.where(new_board == 0.5, ':checkered_flag:', ':cat:') # Flags and a player
+    conditions = [board == 0, board == 1, board == 0.5, board == 0.25]
+    choices = ['', 'X', ':checkered_flag:', ':cat:']
     
-    return new_board.reshape(shape)
+    return np.select(conditions, choices).reshape(shape)
 
 def _format_command_str(command:str) -> str:
     '''
