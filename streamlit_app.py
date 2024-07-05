@@ -24,10 +24,10 @@ if 'executer' not in session_state:
 # Main tab and setting tab
 main, setting = st.tabs(['問題', '設定'])
 
-# Board and commands
-board, command_palette = st.columns([7, 3])
-
 with main:
+    # Board and commands
+    board, command_palette = st.columns([7, 3])
+
     with board:
         st.dataframe(
             pd.DataFrame(frontend.visualize(session_state.board)),
