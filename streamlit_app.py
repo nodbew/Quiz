@@ -27,7 +27,7 @@ main, setting = st.tabs(['問題', '設定'])
 with main:
     # Board and commands
     board, command_palette = st.columns([7, 3])
-
+    st.write(session_state.board)
     with board:
         st.dataframe(
             pd.DataFrame(frontend.visualize(session_state.board)),
