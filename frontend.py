@@ -1,10 +1,11 @@
 import numpy as np
+import pandas as pd
 import streamlit as st
 
 import core
 
 
-def visualize(board:np.ndarray) -> np.ndarray:
+def visualize(board:np.ndarray) -> pd.DataFrame:
     '''
     Takes an ndarray that represents the board.
     It should consist with 0, 1, 0.5, 0.25.
@@ -18,12 +19,10 @@ def visualize(board:np.ndarray) -> np.ndarray:
     0.5 to :checkered_flag:,
     and 0.25 to ':cat:'.
     '''
-    shape = board.shape
-    board = board.copy().astype('object')
     conditions = [board == 0, board == 1, board == 0.5, board == 0.25]
     choices = ['', 'X', ':checkered_flag:', ':cat:']
     
-    return np.select(conditions, choices).reshape(shape)
+    return pd.DataFrame(board).replace(conditions, choices)
 
 def _format_command_str(command:str) -> str:
     '''
