@@ -28,7 +28,7 @@ def visualize(board:np.ndarray) -> np.ndarray:
         ) == 0.5, # Flags
         ':checkered_flag:',
         ':cat:' # Player
-    ).reshape((st.session_state.args['size'][0] + 1, st.session_state.args['size'][1] + 1))
+    ).reshape((st.session_state.args['size'][0] - 1, st.session_state.args['size'][1] - 1))
 
 def _format_command_str(command:str) -> str:
     '''
