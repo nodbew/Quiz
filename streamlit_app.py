@@ -33,8 +33,6 @@ with main:
             pd.DataFrame(
                 frontend.visualize(session_state.board),
             ),
-            hide_index = True,
-            column_config = {i:None for i, _ in enumerate(session_state.board[0])},
             use_container_width = True,
         ) # Static board
 
