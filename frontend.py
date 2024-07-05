@@ -19,6 +19,7 @@ def visualize(board:np.ndarray) -> np.ndarray:
     and 0.25 to ':cat:'.
     '''
     shape = board.shape
+    board = board.copy().as_dtype('U')
     conditions = [board == 0, board == 1, board == 0.5, board == 0.25]
     choices = ['', 'X', ':checkered_flag:', ':cat:']
     
