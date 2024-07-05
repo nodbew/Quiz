@@ -4,6 +4,7 @@ import pandas as pd
 from streamlit_scrollable_textbox import scrollableTextbox
 
 import core
+import frontend
 
 # Initializations
 if 'args' not in session_state:
