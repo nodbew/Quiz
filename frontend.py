@@ -3,8 +3,6 @@ import streamlit as st
 
 import core
 
-def _no_change(x):
-    return x
 
 def visualize(board:np.ndarray) -> np.ndarray:
     '''
@@ -21,15 +19,11 @@ def visualize(board:np.ndarray) -> np.ndarray:
     and 0.25 to ':cat:'.
     '''
     shape = board.shape
-    return np.where(
-        np.where(
-            np.where(board == 0, '', _no_change) == 1, #(replaced walkable) == wall
-            'X', 
-            _no_change
-        ) == 0.5, # Flags
-        ':checkered_flag:',
-        ':cat:' # Player
-    ).reshape(shape)
+    new_board = np.where(board == 0, '', new_board) # Walkable road
+    new_board = np.where(new_board == 1, 'X', new_board) # Walls
+    new_board = np.where(new_board == 0.5, ':checkered_flag:', ':cat:') # Flags and a player
+    
+    return new_board.reshape(shape)
 
 def _format_command_str(command:str) -> str:
     '''
