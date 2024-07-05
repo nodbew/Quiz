@@ -19,7 +19,7 @@ def visualize(board:np.ndarray) -> np.ndarray:
     and 0.25 to ':cat:'.
     '''
     shape = board.shape
-    new_board = np.where(board == 0, '', new_board) # Walkable road
+    new_board = np.where(board == 0, '', board) # Walkable road
     new_board = np.where(new_board == 1, 'X', new_board) # Walls
     new_board = np.where(new_board == 0.5, ':checkered_flag:', ':cat:') # Flags and a player
     
