@@ -49,7 +49,7 @@ def _format_command_str(command:str) -> str:
         case 'endif':
             return ']'
 
-def format_command(commands:list[str]) -> str:
+def format_commands(commands:list[str]) -> str:
     '''
     Takes a list of commands and turn it to a string that is understandable for users.
     '''
