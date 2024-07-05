@@ -1,4 +1,5 @@
 import numpy as np
+import streamlit as st
 
 def _no_change(x):
     return x
@@ -54,3 +55,10 @@ def format_commands(commands:list[str]) -> str:
     Takes a list of commands and turn it to a string that is understandable for users.
     '''
     return '\n'.join(_format_command_str(command) for command in commands)
+
+def rerun():
+    session_state.board = core.generate_map(**session_state.args)
+    session_state.commands = list()
+    session_state.executer = None
+    st.rerun()
+    return
