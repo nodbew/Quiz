@@ -78,6 +78,7 @@ with setting:
             max_value = 10,
             value = 8,
             step = 1,
+            on_change = frontend.rerun,
         ) + 2,
     )
     session_state.args['complexity_x'] = st.slider(
@@ -86,6 +87,7 @@ with setting:
         max_value = session_state.args['size'][1],
         value = 1,
         step = 1,
+        on_change = frontend.rerun,
     )
     session_state.args['complexity_y'] = st.slider(
         label = '横道の数',
@@ -93,6 +95,7 @@ with setting:
         max_value = session_state.args['size'][0],
         value = 1,
         step = 1,
+        on_change = frontend.rerun,
     )
     session_state.args['flags'] = st.slider(
         label = '旗の数',
@@ -100,4 +103,5 @@ with setting:
         max_value = session_state.args['size'][0] * session_state.args['size'][1],
         value = 1,
         step = 1,
+        on_change = frontend.rerun,
     )
