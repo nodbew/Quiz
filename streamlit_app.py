@@ -60,9 +60,7 @@ with main:
         if st.button('実行'):
             session_state.executer = core.execute(session_state.commands, session_state.board, session_state.start_pos)
         if st.button('次へ'):
-            session_state.board = core.generate_map(**session_state.args)
-            session_state.commands = list()
-            session_state.executer = None
+            frontend.rerun()
             
 with setting:
     session_state.args['size'] = (
@@ -70,14 +68,15 @@ with setting:
             label = '縦の長さ', 
             min_value = 1, 
             max_value = 10, 
-            value = 1,
+            value = 8,
             step = 1,
+            on_change = frontend.rerun,
         ) + 2,
         st.slider(
             label = '横の長さ',
             min_value = 1,
             max_value = 10,
-            value = 1,
+            value = 8,
             step = 1,
         ) + 2,
     )
