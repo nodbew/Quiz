@@ -59,7 +59,7 @@ def format_commands(commands:list[str]) -> str:
     return '\n'.join(_format_command_str(command) for command in commands)
 
 def rerun():
-    st.session_state.board = core.generate_map(**session_state.args)
+    st.session_state.board = core.generate_map(**st.session_state.args)
     st.session_state.commands = list()
     st.session_state.executer = None
     st.rerun()
