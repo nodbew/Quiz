@@ -67,12 +67,21 @@ with main:
             session_state.executer = None
             
 with setting:
-    session_state.args['size'] = st.slider(
-        label = '盤のサイズ', 
-        min_value = 1, 
-        max_value = 10, 
-        value = 1,
-        step = 1,
+    session_state.args['size'] = (
+        st.slider(
+            label = '縦の長さ', 
+            min_value = 1, 
+            max_value = 10, 
+            value = 1,
+            step = 1,
+        ) + 1,
+        st.slider(
+            label = '横の長さ',
+            min_value = 1,
+            max_value = 10,
+            value = 1,
+            step = 1,
+        ) + 1,
     )
     session_state.args['complexity_x'] = st.slider(
         label = '縦道の数',
