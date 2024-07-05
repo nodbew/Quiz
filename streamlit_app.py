@@ -30,9 +30,7 @@ board, command_palette = st.columns([7, 3])
 with main:
     with board:
         st.dataframe(
-            pd.DataFrame(
-                frontend.visualize(session_state.board),
-            ),
+            pd.DataFrame(frontend.visualize(session_state.board)),
             use_container_width = True,
         ) # Static board
 
