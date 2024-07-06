@@ -36,6 +36,7 @@ with main:
 
         # If the execution process is alive
         if session_state.executor is not None:
+            st.write('its been here')
 
             # Advance the player
             try:
