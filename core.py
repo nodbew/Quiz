@@ -36,30 +36,6 @@ def generate_map(size:tuple[int, int], complexity_x:int = 1, complexity_y:int = 
 
     return board, starting_position, flag_positions
 
-def recurse(func):
-    '''
-    Recursively execute commands until either all flags are captured or the player drops out of the board.
-    '''
-  
-    @wraps(func)
-    def _wrapper(commands, board, start):
-        pos:tuple = None
-        count = 0
-        executor = func(commands, board, start)
-
-        while len(np.where(board == 0.5)[0]) != 0:
-            try:
-                pos, count = executor.__next__()[0]
-                yield pos
-            except IndexError:
-                return f'{count}枚の旗を見つけました...惜しい...'
-            except Exception as e:
-                return f'Unknown error:{e}'
-        return 'すべての旗を見つけました！'
-
-    return _wrapper
-
-@recurse
 def execute(commands:list[str], board:np.ndarray, start:tuple):
     '''
     Recieves commands and a board and execute the commands.
