@@ -133,7 +133,8 @@ with setting:
         value = session_state.args['complexity_x'],
         step = 1,
         key = 'complexity_x_slider',
-        on_change = frontend.change_default('complexity_x'),
+        on_change = frontend.change_default,
+        args = ('complexity_x',),
     )
     session_state.args['complexity_y'] = st.slider(
         label = '横道の数',
