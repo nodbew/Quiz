@@ -69,22 +69,34 @@ with main:
                 st.rerun()
 
     with command_palette:
+        # Textbox that shows the inputted commands
+        scrollableTextbox(frontend.format_commands(session_state.commands))
+        
         # Button for inputting command, executing commands, and generating new quiz
         if st.button('一歩進む'):
             session_state.commands.append('move')
+            st.rerun()
         if st.button('右を向く'):
             session_state.commands.append('turn')
+            st.rerun()
+        if st.button('左を向く'):
+            session_state.commands.extend(['turn', 'turn', 'turn'])
+            st.rerun()
         if st.button('IF 目の前が壁['):
             session_state.commands.append('if wall')
+            st.rerun()
         if st.button(']ELSE['):
             session_state.commands.append('else')
+            st.rerun()
         if st.button(']'):
             session_state.commands.append('endif')
+            st.rerun()
         if st.button('消す'):
             try:
                 session_state.commands.pop(-1)
             except IndexError:
                 pass
+            st.rerun()
         if st.button('実行'):
             # The board should be initialized because a previous execution might have changed the board
             session_state.board = np.where(session_state.board == 0.25, 0, session_state.board)
@@ -97,9 +109,6 @@ with main:
             st.rerun()
         if st.button('次へ'):
             frontend.rerun()
-
-        # Textbox that shows the inputted commands
-        scrollableTextbox(frontend.format_commands(session_state.commands))
             
 with setting:
     session_state.args['size'] = (
