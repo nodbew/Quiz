@@ -83,30 +83,30 @@ def execute(commands:list[str], board:np.ndarray, start:tuple):
                     case 0:
                         # Move player
                         board[position[0], position[1]] = 0
-                        board[position[0] + 1, position[1]] = PLAYER
+                        board[position[0], position[1] + 1] = PLAYER
                         # Refresh position
-                        position = (position[0] + 1, position[1])
+                        position = (position[0], position[1] + 1)
 
                     case 90:
-                        # Move player
-                        board[position[0], position[1]] = 0
-                        board[position[0], position[1] - 1] = PLAYER
-                        # Refresh position
-                        position = (position[0], position[1] - 1)
-
-                    case 180:
                         # Move player
                         board[position[0], position[1]] = 0
                         board[position[0] - 1, position[1]] = PLAYER
                         # Refresh position
                         position = (position[0] - 1, position[1])
 
+                    case 180:
+                        # Move player
+                        board[position[0], position[1]] = 0
+                        board[position[0], position[1] - 1] = PLAYER
+                        # Refresh position
+                        position = (position[0], position[1] - 1)
+
                     case 270:
                         # Move player
                         board[position[0], position[1]] = 0
-                        board[position[0], position[1] + 1] = PLAYER
+                        board[position[0] + 1, position[1]] = PLAYER
                         # Refresh position
-                        position = (position[0], position[1] + 1)
+                        position = (position[0] + 1, position[1])
 
             case 'turn':
                 direction = (direction + 90) % 360
