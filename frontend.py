@@ -19,7 +19,7 @@ def visualize(board:np.ndarray) -> pd.DataFrame:
     0.5 to :checkered_flag:,
     and 0.25 to ':cat:'.
     '''
-    conditions = [board == 0, board == 1, board == 0.5, board == 0.25]
+    conditions = [0, 1, 0.5, 0.25]
     choices = ['', 'X', ':checkered_flag:', ':cat:']
     
     return pd.DataFrame(board).replace(conditions, choices)
