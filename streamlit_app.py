@@ -16,8 +16,6 @@ if 'args' not in session_state:
         'complexity_y': 1,
         'flags': 1,
     }
-if 'complexity_x_default' not in session_state:
-    session_state['complexity_x_default'] = 1
 if 'board' not in session_state:
     session_state.board, session_state.start_pos, session_state.flag_positions = core.generate_map(**session_state.args)
 if 'commands' not in session_state:
@@ -132,9 +130,9 @@ with setting:
         label = '縦道の数',
         min_value = 1,
         max_value = session_state.args['size'][1],
-        value = session_state['complexity_x_default'],
+        value = session_state.args['complexity_x'],
         step = 1,
-        key = 'complexity_x',
+        key = 'complexity_x_slider',
         on_change = frontend.change_default('complexity_x'),
     )
     session_state.args['complexity_y'] = st.slider(
