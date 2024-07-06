@@ -20,7 +20,7 @@ if 'board' not in session_state:
 if 'commands' not in session_state:
     session_state.commands = list()
 if 'executer' not in session_state:
-    session_state.executer = None # To show where did the user's program step by step
+    session_state.executor = None # To show where did the user's program step by step
 
 # Main tab and setting tab
 main, setting = st.tabs(['問題', '設定'])
@@ -35,7 +35,7 @@ with main:
         ) # Static board
 
         # If the execution process is alive
-        if session_state.executer is not None:
+        if session_state.executor is not None:
 
             # Advance the player
             try:
@@ -47,7 +47,7 @@ with main:
                     st.error('失敗...')
                 else:
                     st.success('成功！')
-                session_state.executer = None   
+                session_state.executor = None   
 
             # Fell out of the board
             except IndexError:
@@ -55,7 +55,7 @@ with main:
                     st.error('失敗...')
                 else:
                     st.success('成功！')
-                session_state.executer = None
+                session_state.executor = None
 
             # Unknown error
             except Exception as e:
@@ -85,7 +85,7 @@ with main:
             except IndexError:
                 pass
         if st.button('実行'):
-            session_state.executer = core.execute(session_state.commands, session_state.board, session_state.start_pos)
+            session_state.executor = core.execute(session_state.commands, session_state.board, session_state.start_pos)
         if st.button('次へ'):
             frontend.rerun()
             
