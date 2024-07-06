@@ -108,7 +108,7 @@ def execute(commands:list[str], board:np.ndarray, start:tuple):
                         raise IndexError() # Ends the execution process
 
             case 'turn':
-                direction = (direction + 90) % 360
+                direction = (direction - 90) % 360
 
             case 'if wall':
                 pos = position
