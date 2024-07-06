@@ -42,24 +42,25 @@ def recurse(func):
     or the player falls off the board.
     '''
     @wraps(func)
-    def _wrapper(*args, **kwargs):
+    def _wrapper(commands, board, start):
         flag_count = 1
-        executor = func(*args, **kwargs)
+        direction = 90
+        executor = func(commands, board, start, direction)
         while True:
             try:
-                pos, count = executor.__next__()
+                pos, count, direction = executor.__next__()
                 if count == 0:
                     raise IndexError() # Ends the execution process
                 else:
                     yield pos, count
             except StopIteration:
-                executor = func(*args, **kwargs)
+                executor = func(commands, board, pos, direction)
                 continue
 
     return _wrapper
 
 @recurse
-def execute(commands:list[str], board:np.ndarray, start:tuple):
+def execute(commands:list[str], board:np.ndarray, start:tuple, start_direction:int = 90):
     '''
     Recieves commands and a board and execute the commands.
     Returns the count of how many flags did the player succeed to get.
@@ -68,7 +69,7 @@ def execute(commands:list[str], board:np.ndarray, start:tuple):
     # To count how many flags did the program achieve
     count = len(np.where(board == 0.5)[0])
     # To record which way is the player facing to
-    direction = 90 # 0, 90, 180, 270
+    direction = start_direction # 0, 90, 180, 270
     # To record where the player is
     position = start
     # To record if block
@@ -158,4 +159,4 @@ def execute(commands:list[str], board:np.ndarray, start:tuple):
                 raise ValueError('Invalid command')
 
 
-        yield position, count # For tracking where have the programm reached so far
+        yield position, count, direction # For tracking where have the programm reached so far
