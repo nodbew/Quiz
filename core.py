@@ -44,13 +44,15 @@ def recurse(func):
     @wraps(func)
     def _wrapper(*args, **kwargs):
         flag_count = 1
+        executor = func(*args, **kwargs)
         while True:
-            for pos, count in func(*args, **kwargs):
+            try:
+                pos, count = executor.__next__()
                 if count == 0:
-                    raise IndexError()
-                else:
-                    flag_count = count
-                    yield pos, count
+                    raise IndexError() # Ends the execution process
+            except StopIteration:
+                executor = func(*args, **kwargs)
+                continue
 
     return _wrapper
 
