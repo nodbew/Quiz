@@ -6,7 +6,7 @@ def generate_map(size:tuple[int, int], complexity_x:int = 1, complexity_y:int = 
     Takes the size of the board, and how many walkable lines to create, and the number of the targets.
     The size of the board will be shrinked by one for each axis.
     '''
-    raise Exception()
+
     FLAG = 0.5
     # There should be at least one block of wall on the outer lim
     size = (size[0] - 1, size[1] - 1)
