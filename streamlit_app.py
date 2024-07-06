@@ -43,17 +43,19 @@ with main:
                 session_state.executor.__next__()
 
             # Executed all commands
-            except StopIteration:
+            except StopIteration as e:
                 if 0.5 in session_state.board:
+                    raise e
                     st.error('失敗...')
                 else:
                     st.success('成功！')
                 session_state.executor = None   
 
             # Fell out of the board
-            except IndexError:
+            except IndexError as e:
                 if 0.5 in session_state.board:
                     st.error('失敗...')
+                    raise e
                 else:
                     st.success('成功！')
                 session_state.executor = None
