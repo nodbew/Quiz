@@ -89,8 +89,8 @@ with main:
             # The board should be initialized because a previous execution might have changed the board
             session_state.board = np.where(session_state.board == 0.25, 0, session_state.board)
             session_state.board[session_state.start_pos[0], session_state.start_pos[1]] = 0.25
-            for flag_y, flag_x in flag_positions:
-                session_state.board[flag_y, flag_x] = FLAG
+            for flag_y, flag_x in session_state.flag_positions:
+                session_state.board[flag_y, flag_x] = 0.5
 
             # Ignite the execution process
             session_state.executor = core.execute(session_state.commands, session_state.board, session_state.start_pos)
