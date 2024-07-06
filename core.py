@@ -91,7 +91,7 @@ def execute(commands:list[str], board:np.ndarray, start:tuple, start_direction:i
                 ignore = False
                 continue
             elif command == 'else':
-                pass # Should execute this part
+                ignore = False # Should execute this part
             else:
                 continue
 
