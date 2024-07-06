@@ -68,6 +68,7 @@ with main:
                 st.rerun()
 
     with command_palette:
+        # Button for inputting command, executing commands, and generating new quiz
         if st.button('一歩進む'):
             session_state.commands.append('move')
         if st.button('右を向く'):
@@ -84,10 +85,17 @@ with main:
             except IndexError:
                 pass
         if st.button('実行'):
+            # The board should be initialized because a previous execution might have changed the board
+            session_state.board.replace(0.25, 0)
+            session_state.board[session_state.start_pos[0], session_state.start_pos[1]] = 0.25
+
+            # Ignite the execution process
             session_state.executor = core.execute(session_state.commands, session_state.board, session_state.start_pos)
             st.rerun()
         if st.button('次へ'):
             frontend.rerun()
+
+        # Textbox that shows the inputted commands
         scrollableTextbox(frontend.format_commands(session_state.commands))
             
 with setting:
