@@ -2,6 +2,7 @@ import streamlit as st
 from streamlit import session_state
 import pandas as pd
 from streamlit_scrollable_textbox import scrollableTextbox
+from time import sleep
 
 import core
 import frontend
@@ -27,7 +28,6 @@ main, setting = st.tabs(['問題', '設定'])
 with main:
     # Board and commands
     board, command_palette = st.columns([7, 3])
-    st.write(session_state.board)
     with board:
         st.dataframe(
             frontend.visualize(session_state.board),
@@ -41,7 +41,10 @@ with main:
                     st.success(result)
                 else:
                     st.error(result)
-                session_state.executer = None            
+                session_state.executer = None      
+            else:
+                sleep(1)
+                st.rerun()
 
     with command_palette:
         scrollableTextbox(frontend.format_commands(session_state.commands))
