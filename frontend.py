@@ -58,5 +58,4 @@ def rerun():
     st.session_state.board, st.session_state.start_pos, st.session_state.flag_positions = core.generate_map(**st.session_state.args)
     st.session_state.commands = list()
     st.session_state.executer = None
-    st.rerun()
     return
