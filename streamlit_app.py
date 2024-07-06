@@ -16,8 +16,7 @@ if 'args' not in session_state:
         'complexity_y': 1,
         'flags': 1,
     }
-if '_BAORD_' not in session_state:
-    session_state._BOARD_ = None
+if 'board' not in session_state:
     session_state.board, session_state.start_pos, session_state.flag_positions = core.generate_map(**session_state.args)
 if 'commands' not in session_state:
     session_state.commands = list()
