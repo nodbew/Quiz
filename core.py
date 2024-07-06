@@ -76,28 +76,28 @@ def execute(commands:list[str], board:np.ndarray, start:tuple):
         match command:
             case 'move':
                 match direction:
-                    case 0 if (board[position[0], position[1]] == 1): # Check if the player is in an invalid area
+                    case 0 if (board[position[0], position[1]] != 0): # Check if the player is in an invalid area
                         # Move player
                         board[position[0], position[1]] = 0
                         board[position[0], position[1] + 1] = PLAYER
                         # Refresh position
                         position = (position[0], position[1] + 1)
                 
-                    case 90 if (board[position[0], position[1]] == 1):
+                    case 90 if (board[position[0], position[1]] != 1):
                         # Move player
                         board[position[0], position[1]] = 0
                         board[position[0] - 1, position[1]] = PLAYER
                         # Refresh position
                         position = (position[0] - 1, position[1])
 
-                    case 180 if (board[position[0], position[1]] == 1):
+                    case 180 if (board[position[0], position[1]] != 1):
                         # Move player
                         board[position[0], position[1]] = 0
                         board[position[0], position[1] - 1] = PLAYER
                         # Refresh position
                         position = (position[0], position[1] - 1)
 
-                    case 270 if (board[position[0], position[1]] == 1):
+                    case 270 if (board[position[0], position[1]] != 1):
                         # Move player
                         board[position[0], position[1]] = 0
                         board[position[0] + 1, position[1]] = PLAYER
