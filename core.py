@@ -61,8 +61,6 @@ def execute(commands:list[str], board:np.ndarray, start:tuple):
         if board[position[0], position[1]] == FLAG:
             count += 1
             board[position[0], position[1]] = 0
-        
-        yield position, count # For tracking where have the programm reached so far
 
         if ignore:
             if command == 'endif':
@@ -132,3 +130,6 @@ def execute(commands:list[str], board:np.ndarray, start:tuple):
 
             case _:
                 raise ValueError('Invalid command')
+
+
+        yield position, count # For tracking where have the programm reached so far
