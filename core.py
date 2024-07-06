@@ -62,7 +62,7 @@ def execute(commands:list[str], board:np.ndarray, start:tuple):
     '''
 
     # To count how many flags did the program achieve
-    count = 0
+    count = len(np.where(board == 0.5)[0])
     # To record which way is the player facing to
     direction = 90 # 0, 90, 180, 270
     # To record where the player is
@@ -78,7 +78,7 @@ def execute(commands:list[str], board:np.ndarray, start:tuple):
 
         # Refresh count
         if board[position[0], position[1]] == FLAG:
-            count += 1
+            count -= 1
             board[position[0], position[1]] = 0
 
         if ignore:
