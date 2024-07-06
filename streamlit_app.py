@@ -16,6 +16,8 @@ if 'args' not in session_state:
         'complexity_y': 1,
         'flags': 1,
     }
+if 'complexity_x' not in session_state:
+    session_state['complexity_x'] = 1
 if 'board' not in session_state:
     session_state.board, session_state.start_pos, session_state.flag_positions = core.generate_map(**session_state.args)
 if 'commands' not in session_state:
@@ -112,28 +114,28 @@ with main:
             st.rerun()
             
 with setting:
-    session_state.args['size'] = (
-        st.slider(
+    st.slider(
             label = '縦の長さ', 
             min_value = 1, 
             max_value = 10, 
             value = session_state.args['size'][0],
             step = 1,
-        ) + 1,
-        st.slider(
+        )
+    st.slider(
             label = '横の長さ',
             min_value = 1,
             max_value = 10,
             value = session_state.args['size'][1],
             step = 1,
-        ) + 1,
-    )
-    session_state.args['complexity_x'] = st.slider(
+        )
+    st.slider(
         label = '縦道の数',
         min_value = 1,
         max_value = session_state.args['size'][1],
-        value = session_state.args['complexity_x'],
+        value = session_state['complexity_x_default'],
         step = 1,
+        key = 'complexity_x',
+        on_change = frontend.change_default('complexity_x'),
     )
     session_state.args['complexity_y'] = st.slider(
         label = '横道の数',
