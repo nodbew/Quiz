@@ -36,6 +36,25 @@ def generate_map(size:tuple[int, int], complexity_x:int = 1, complexity_y:int = 
 
     return board, starting_position, flag_positions
 
+def recurse(func):
+    '''
+    Takes the execute function below and recusively calls it until either all flags are captured
+    or the player falls off the board.
+    '''
+    @wraps(func)
+    def _wrapper(*args, **kwargs):
+        flag_count = 1
+        while True:
+            for pos, count in func(*args, **kwargs):
+                if count == 0:
+                    raise IndexError()
+                else:
+                    flag_count = count
+                    yield pos, count
+
+    return _wrapper
+
+@recurse
 def execute(commands:list[str], board:np.ndarray, start:tuple):
     '''
     Recieves commands and a board and execute the commands.
