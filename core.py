@@ -61,10 +61,6 @@ def execute(commands:list[str], board:np.ndarray, start:tuple):
         if board[position[0], position[1]] == FLAG:
             count += 1
             board[position[0], position[1]] = 0
-
-        # Check if the player is in an invalid area
-        if board[position[0], position[1]] == 1:
-            raise IndexError() # This will be catched and interpreted as an end of the command execution by the main program
         
         yield position, count # For tracking where have the programm reached so far
 
@@ -80,33 +76,36 @@ def execute(commands:list[str], board:np.ndarray, start:tuple):
         match command:
             case 'move':
                 match direction:
-                    case 0:
+                    case 0 if (board[position[0], position[1]] == 1): # Check if the player is in an invalid area
                         # Move player
                         board[position[0], position[1]] = 0
                         board[position[0], position[1] + 1] = PLAYER
                         # Refresh position
                         position = (position[0], position[1] + 1)
-
-                    case 90:
+                
+                    case 90 if (board[position[0], position[1]] == 1):
                         # Move player
                         board[position[0], position[1]] = 0
                         board[position[0] - 1, position[1]] = PLAYER
                         # Refresh position
                         position = (position[0] - 1, position[1])
 
-                    case 180:
+                    case 180 if (board[position[0], position[1]] == 1):
                         # Move player
                         board[position[0], position[1]] = 0
                         board[position[0], position[1] - 1] = PLAYER
                         # Refresh position
                         position = (position[0], position[1] - 1)
 
-                    case 270:
+                    case 270 if (board[position[0], position[1]] == 1):
                         # Move player
                         board[position[0], position[1]] = 0
                         board[position[0] + 1, position[1]] = PLAYER
                         # Refresh position
                         position = (position[0] + 1, position[1])
+
+                    case _: # Blocked by the if guard statement, which means that the position is invalid
+                        raise IndexError() # Ends the execution process
 
             case 'turn':
                 direction = (direction + 90) % 360
