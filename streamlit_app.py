@@ -19,7 +19,7 @@ if 'board' not in session_state:
     session_state.board, session_state.start_pos, session_state.flag_positions = core.generate_map(**session_state.args)
 if 'commands' not in session_state:
     session_state.commands = list()
-if 'executer' not in session_state:
+if 'executor' not in session_state:
     session_state.executor = None # To show where did the user's program step by step
 
 # Main tab and setting tab
@@ -36,7 +36,6 @@ with main:
 
         # If the execution process is alive
         if session_state.executor is not None:
-            st.write('its been here')
 
             # Advance the player
             try:
