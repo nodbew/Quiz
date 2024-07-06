@@ -127,7 +127,7 @@ with setting:
     session_state.args['flags'] = st.slider(
         label = '旗の数',
         min_value = 1,
-        max_value = session_state.args['size'][0] * session_state.args['size'][1],
+        max_value = min([10, session_state.args['size'][0] * session_state.args['size'][1]]),
         value = 1,
         step = 1,
         on_change = frontend.rerun,
