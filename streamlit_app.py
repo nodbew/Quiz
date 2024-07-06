@@ -68,7 +68,6 @@ with main:
                 st.rerun()
 
     with command_palette:
-        scrollableTextbox(frontend.format_commands(session_state.commands))
         if st.button('一歩進む'):
             session_state.commands.append('move')
         if st.button('右を向く'):
@@ -88,6 +87,7 @@ with main:
             session_state.executor = core.execute(session_state.commands, session_state.board, session_state.start_pos)
         if st.button('次へ'):
             frontend.rerun()
+        scrollableTextbox(frontend.format_commands(session_state.commands))
             
 with setting:
     session_state.args['size'] = (
