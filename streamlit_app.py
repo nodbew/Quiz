@@ -35,12 +35,13 @@ with main:
         ) # Static board
 
         if session_state.executer is not None:
-            result = session_state.executer.__next__()
-            if isinstance(result, str):
-                if '！' in result:
-                    st.success(result)
+            try:
+                session_state.executer.__next__()
+            except StopIteration:
+                if 0.25 in session_state.board:
+                    st.error('失敗...')
                 else:
-                    st.error(result)
+                    st.success('成功！')
                 session_state.executer = None      
             else:
                 sleep(1)
