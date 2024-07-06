@@ -34,18 +34,37 @@ with main:
             use_container_width = True,
         ) # Static board
 
+        # If the execution process is alive
         if session_state.executer is not None:
+
+            # Advance the player
             try:
-                session_state.executer.__next__()
+                session_state.executor.__next__()
+
+            # Executed all commands
             except StopIteration:
                 if 0.25 in session_state.board:
                     st.error('失敗...')
                 else:
                     st.success('成功！')
-                session_state.executer = None      
-            else:
-                sleep(1)
-                st.rerun()
+                session_state.executer = None   
+
+            # Fell out of the board
+            except IndexError:
+                if 0.25 in session_state.board:
+                    st.error('失敗...')
+                else:
+                    st.success('成功！')
+
+            # Unknown error
+            except Exception as e:
+                st.error(f'Unknown error:{e}')
+                st.stop()
+
+        # The process not ended yet
+        else:
+            sleep(1)
+            st.rerun()
 
     with command_palette:
         scrollableTextbox(frontend.format_commands(session_state.commands))
