@@ -80,7 +80,7 @@ with main:
             session_state.commands.append('turn')
             st.rerun()
         if st.button('左を向く'):
-            session_state.commands.extend(['turn', 'turn', 'turn'])
+            session_state.commands.extend(['lturn'])
             st.rerun()
         if st.button('IF 目の前が壁['):
             session_state.commands.append('if wall')
