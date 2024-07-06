@@ -1,5 +1,6 @@
 import streamlit as st
 from streamlit import session_state
+import numpy as np
 import pandas as pd
 from streamlit_scrollable_textbox import scrollableTextbox
 from time import sleep
