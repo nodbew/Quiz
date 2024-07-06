@@ -30,7 +30,7 @@ with main:
     st.write(session_state.board)
     with board:
         st.dataframe(
-            pd.DataFrame(frontend.visualize(session_state.board)),
+            frontend.visualize(session_state.board),
             use_container_width = True,
         ) # Static board
 
