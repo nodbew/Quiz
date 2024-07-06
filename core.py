@@ -146,7 +146,7 @@ def execute(commands:list[str], board:np.ndarray, start:tuple, start_direction:i
                         pos = (pos[0], pos[1] - 1)
                     case 270:
                         pos = (pos[0] + 1, pos[1])
-                if board[pos[0], pos[1]] == 1:
+                if board[pos[0], pos[1]] != 1:
                     ignore = True
 
             case 'endif':
