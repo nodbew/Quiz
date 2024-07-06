@@ -7,7 +7,7 @@ from time import sleep
 
 import core
 import frontend
-
+st.write(st.session_state)
 # Initializations
 if 'args' not in session_state:
     session_state.args = {
