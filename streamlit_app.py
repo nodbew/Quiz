@@ -45,7 +45,6 @@ with main:
             # Executed all commands
             except StopIteration as e:
                 if 0.5 in session_state.board:
-                    raise e
                     st.error('失敗...')
                 else:
                     st.success('成功！')
@@ -55,7 +54,6 @@ with main:
             except IndexError as e:
                 if 0.5 in session_state.board:
                     st.error('失敗...')
-                    raise e
                 else:
                     st.success('成功！')
                 session_state.executor = None
