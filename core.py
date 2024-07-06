@@ -50,6 +50,8 @@ def recurse(func):
                 pos, count = executor.__next__()
                 if count == 0:
                     raise IndexError() # Ends the execution process
+                else:
+                    yield pos, count
             except StopIteration:
                 executor = func(*args, **kwargs)
                 continue
