@@ -139,13 +139,13 @@ def execute(commands:list[str], board:np.ndarray, start:tuple, start_direction:i
                 pos = position
                 match direction:
                     case 0:
-                        pos = (pos[0] + 1, pos[1])
-                    case 90:
                         pos = (pos[0], pos[1] + 1)
-                    case 180:
+                    case 90:
                         pos = (pos[0] - 1, pos[1])
-                    case 270:
+                    case 180:
                         pos = (pos[0], pos[1] - 1)
+                    case 270:
+                        pos = (pos[0] + 1, pos[1])
                 if board[pos[0], pos[1]] == 1:
                     ignore = True
 
