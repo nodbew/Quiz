@@ -85,6 +85,7 @@ with main:
                 pass
         if st.button('実行'):
             session_state.executor = core.execute(session_state.commands, session_state.board, session_state.start_pos)
+            st.rerun()
         if st.button('次へ'):
             frontend.rerun()
         scrollableTextbox(frontend.format_commands(session_state.commands))
