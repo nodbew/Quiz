@@ -44,7 +44,7 @@ with main:
 
             # Executed all commands
             except StopIteration:
-                if 0.25 in session_state.board:
+                if 0.5 in session_state.board:
                     st.error('失敗...')
                 else:
                     st.success('成功！')
@@ -52,7 +52,7 @@ with main:
 
             # Fell out of the board
             except IndexError:
-                if 0.25 in session_state.board:
+                if 0.5 in session_state.board:
                     st.error('失敗...')
                 else:
                     st.success('成功！')
