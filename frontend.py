@@ -19,7 +19,6 @@ def visualize(board:np.ndarray) -> pd.DataFrame:
     0.5 to :checkered_flag:,
     and 0.25 to ':cat:'.
     '''
-    st.write(board)
     conditions = [0, 1, 0.5, 0.25]
     choices = ['', 'X', '🚩', '🐈']
     
