@@ -39,6 +39,8 @@ def _format_command_str(command:str) -> str:
             return '一歩進む'
         case 'turn':
             return '右を向く'
+        case 'lturn':
+            return '左を向く'
         case 'if wall':
             return 'IF 目の前が壁['
         case 'else':
