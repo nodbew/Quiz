@@ -25,7 +25,7 @@ def generate_map(size:tuple[int, int], complexity_x:int = 1, complexity_y:int = 
     board[:, lines_x] = 0
     board[lines_y, :] = 0
 
-    flag_positions = rng.choicee(np.argwhere(board == 0), size = flags)
+    flag_positions = rng.choice(np.argwhere(board == 0), size = flags)
 
     board[flag_positions[0], flag_positions[1]] = FLAG
 
