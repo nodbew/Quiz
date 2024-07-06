@@ -79,7 +79,7 @@ def execute(commands:list[str], board:np.ndarray, start:tuple):
         # Refresh count
         if board[position[0], position[1]] == FLAG:
             count -= 1
-            board[position[0], position[1]] = 0
+            board[position[0], position[1]] = 0.25
 
         if ignore:
             if command == 'endif':
