@@ -56,12 +56,17 @@ def execute(commands:list[str], board:np.ndarray, start:tuple):
     FLAG = 0.5
 
     for command in commands:
-        yield position, count # For tracking where have the programm reached so far
 
         # Refresh count
         if board[position[0], position[1]] == FLAG:
-                            count += 1
-                            board[position[0], position[1]] = 0
+            count += 1
+            board[position[0], position[1]] = 0
+
+        # Check if the player is in an invalid area
+        if board[position[0], position[1]] == 1:
+            raise IndexError() # This will be catched and interpreted as an end of the command execution by the main program
+        
+        yield position, count # For tracking where have the programm reached so far
 
         if ignore:
             if command == 'endif':
