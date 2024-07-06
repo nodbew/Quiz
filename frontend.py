@@ -59,3 +59,11 @@ def rerun():
     st.session_state.commands = list()
     st.session_state.executor = None
     return
+
+def change_default(key:str) -> None:
+    '''
+    Takes a key of a streamlit slider component and changes the default value of the slider.
+    '''
+    val = st.session_stat[key]
+    st.session_state[key + '_default'] = val
+    return 
