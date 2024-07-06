@@ -132,7 +132,7 @@ def execute(commands:list[str], board:np.ndarray, start:tuple):
                 direction = (direction - 90) % 360
 
             case 'lturn':
-                direction = (direction + 90) & 360
+                direction = (direction + 90) % 360
 
             case 'if wall':
                 pos = position
