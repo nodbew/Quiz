@@ -86,7 +86,7 @@ with main:
                 pass
         if st.button('実行'):
             # The board should be initialized because a previous execution might have changed the board
-            session_state.board.replace(0.25, 0)
+            session_state.board = np.where(session_state.board == 0.25, 0, session_state.board)
             session_state.board[session_state.start_pos[0], session_state.start_pos[1]] = 0.25
 
             # Ignite the execution process
