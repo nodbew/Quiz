@@ -30,7 +30,7 @@ def generate_map(size:tuple[int, int], complexity_x:int = 1, complexity_y:int = 
 
     board[flag_positions[0], flag_positions[1]] = FLAG
 
-    starting_position = (lines_x[0], len(board[:,0]) - 1)
+    starting_position = (len(board[:,0]) - 1, lines_x[0])
 
     board[starting_position[0], starting_position[1]] = 0.25
 
