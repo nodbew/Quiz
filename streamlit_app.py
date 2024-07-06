@@ -109,6 +109,7 @@ with main:
             st.rerun()
         if st.button('次へ'):
             frontend.rerun()
+            st.rerun()
             
 with setting:
     session_state.args['size'] = (
