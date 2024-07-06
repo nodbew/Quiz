@@ -66,6 +66,6 @@ def change_default(key:str) -> None:
     '''
     if key not in st.session_state:
         return
-    val = st.session_state[key]
-    st.session_state[key + '_default'] = val
+    val = st.session_state[key + '_slider']
+    st.session_state.args[key] = val
     return 
