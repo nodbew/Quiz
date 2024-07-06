@@ -55,16 +55,17 @@ with main:
                     st.error('失敗...')
                 else:
                     st.success('成功！')
+                session_state.executer = None
 
             # Unknown error
             except Exception as e:
                 st.error(f'Unknown error:{e}')
                 st.stop()
 
-        # The process not ended yet
-        else:
-            sleep(1)
-            st.rerun()
+            # The process not ended yet
+            else:
+                sleep(1)
+                st.rerun()
 
     with command_palette:
         scrollableTextbox(frontend.format_commands(session_state.commands))
