@@ -43,6 +43,9 @@ def recurse(func):
     '''
     @wraps(func)
     def _wrapper(commands, board, start):
+        if commands == []:
+            raise InedexError()
+            
         flag_count = 1
         direction = 90
         executor = func(commands, board, start, direction)
