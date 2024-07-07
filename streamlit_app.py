@@ -169,6 +169,6 @@ with setting:
         value = session_state.flags_default,
         step = 1,
         key = 'flags_slider',
-        on_change = forntend.change_default,
+        on_change = frontend.change_default,
         args = ('flags',),
     )
