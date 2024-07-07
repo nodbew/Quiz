@@ -149,8 +149,11 @@ def execute(commands:list[str], board:np.ndarray, start:tuple, start_direction:i
                         pos = (pos[0], pos[1] - 1)
                     case 270:
                         pos = (pos[0] + 1, pos[1])
-                if board[pos[0], pos[1]] != 1:
-                    ignore = True
+                try:
+                    if board[pos[0], pos[1]] != 1:
+                        ignore = True
+                except IndexError: # The edge of the board is also considered as a wall
+                    pass
 
             case 'endif':
                 continue # This endif command should be a part of the if block that was executed successfully
