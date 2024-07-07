@@ -70,7 +70,7 @@ def change_default(key:str) -> None:
     st.session_state.args[key] = val
     return 
 
-def chage_default_size(index:int) -> None:
+def change_default_size(index:int) -> None:
     '''
     Specialized change_default function for changing the size.
     '''
