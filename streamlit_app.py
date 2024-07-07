@@ -118,6 +118,7 @@ with setting:
             max_value = 10, 
             value = session_state.size_0_default,
             step = 1,
+            key = 'size_0_slider',
             on_change = frontend.change_default_size,
             args = (0,),
         )
@@ -127,6 +128,7 @@ with setting:
             max_value = 10,
             value = session_state.size_1_default,
             step = 1,
+            key = 'size_1_slider',
             on_change = frontend.change_default_size,
             args = (1,),
         )
@@ -146,6 +148,7 @@ with setting:
         max_value = session_state.args['size'][0],
         value = session_state.complexity_y_default,
         step = 1,
+        key = 'complexity_y_slider',
         on_change = frontend.change_default,
         args = ('complexity_y',),
     )
@@ -155,6 +158,7 @@ with setting:
         max_value = min([10, session_state.args['size'][0] * session_state.args['size'][1]]),
         value = session_state.flags_default
         step = 1,
+        key = 'flags_slider',
         on_change = forntend.change_default,
         args = ('flags',),
     )
