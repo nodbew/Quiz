@@ -74,9 +74,9 @@ def chage_default_size(index:int) -> None:
     '''
     Specialized change_default function for changing the size.
     '''
-    if f'change_{index}_slider' not in st.session_state:
+    if f'size_{index}_slider' not in st.session_state:
         return
-    val = st.session_state[f'change_{index}_slider']
+    val = st.session_state[f'size_{index}_slider']
     if index == 0:
         st.session_state.args['size'] = (val, st.session_state.args['size'][1])
     elif index == 2:
