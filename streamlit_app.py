@@ -156,7 +156,7 @@ with setting:
         label = '旗の数',
         min_value = 1,
         max_value = min([10, session_state.args['size'][0] * session_state.args['size'][1]]),
-        value = session_state.flags_default
+        value = session_state.flags_default,
         step = 1,
         key = 'flags_slider',
         on_change = forntend.change_default,
