@@ -64,7 +64,7 @@ def change_default(key:str) -> None:
     '''
     Takes a key of a streamlit slider component and changes the default value of the slider.
     '''
-    if key not in st.session_state:
+    if (key + '_slider') not in st.session_state:
         return
     val = st.session_state[key + '_slider']
     st.session_state.args[key] = val
