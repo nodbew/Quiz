@@ -69,3 +69,18 @@ def change_default(key:str) -> None:
     val = st.session_state[key + '_slider']
     st.session_state.args[key] = val
     return 
+
+def chage_default_size(index:int) -> None:
+    '''
+    Specialized change_default function for changing the size.
+    '''
+    if f'change_{index}_slider' not in st.session_state:
+        return
+    val = st.session_state[f'change_{index}_slider']
+    if index == 0:
+        st.session_state.args['size'] = (val, st.session_state.args['size'][1])
+    elif index == 2:
+        st.session_state.args['size'] = (st.session_state.args['size'][0], val)
+    else:
+        raise ValueError('Internal error: Invalid arguments for the change_default_size function')
+    return
